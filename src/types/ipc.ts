@@ -23,6 +23,10 @@ export interface ElectronAPI {
   setTitlebarOverlay: (color: string, symbolColor: string) => Promise<void>
   /** Fetches a URL via the main process, bypassing renderer CORS restrictions. */
   codexFetch: (url: string) => Promise<unknown>
+  /** Returns the running app version (e.g. "1.0.0") from Electron's app.getVersion(). */
+  getAppVersion: () => Promise<string>
+  /** Opens a URL in the user's default browser. */
+  openExternal: (url: string) => Promise<void>
 }
 
 declare global {

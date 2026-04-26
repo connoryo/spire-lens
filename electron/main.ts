@@ -156,6 +156,10 @@ app.whenReady().then(() => {
     return res.json()
   })
 
+  ipcMain.handle('get-app-version', () => app.getVersion())
+
+  ipcMain.handle('open-external', (_event, url: string) => shell.openExternal(url))
+
   createWindow()
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()

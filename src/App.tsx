@@ -65,33 +65,70 @@ function CodexStatusChip() {
   )
 }
 
-function CheckForUpdatesButton() {
-  const [checking, setChecking] = useState(false)
-  const [checked, setChecked] = useState(false)
+const RELEASES_URL = 'https://github.com/connoryo/spire-lens/releases/latest'
+const RELEASES_API = 'https://api.github.com/repos/connoryo/spire-lens/releases/latest'
 
-  function handleClick() {
-    if (checking) return
-    setChecking(true)
-    setChecked(false)
-    // Placeholder — wire up Electron autoUpdater here in the future
-    setTimeout(() => { setChecking(false); setChecked(true) }, 1200)
+type UpdateState = 'idle' | 'checking' | 'up_to_date' | 'update_available' | 'error'
+
+function CheckForUpdatesButton() {
+  const [state, setState] = useState<UpdateState>('idle')
+  const [latestTag, setLatestTag] = useState<string | null>(null)
+
+  async function handleClick() {
+    if (state === 'checking') return
+    if (state === 'update_available') {
+      window.electronAPI?.openExternal(RELEASES_URL)
+      return
+    }
+    setState('checking')
+    try {
+      const [currentVersion, release] = await Promise.all([
+        window.electronAPI?.getAppVersion() ?? '0.0.0',
+        window.electronAPI?.codexFetch(RELEASES_API) as Promise<{ tag_name: string }>,
+      ])
+      const tag = release.tag_name          // e.g. "v1.2.0"
+      const latest = tag.replace(/^v/, '')  // "1.2.0"
+      setLatestTag(tag)
+      setState(latest === currentVersion ? 'up_to_date' : 'update_available')
+    } catch {
+      setState('error')
+    }
   }
+
+  const label =
+    state === 'checking'         ? 'Checking…'       :
+    state === 'up_to_date'       ? 'Up to date'      :
+    state === 'update_available' ? `Update ${latestTag}` :
+    state === 'error'            ? 'Check failed'    :
+    'Check for Updates'
+
+  const color =
+    state === 'up_to_date'       ? '#4caf7a' :
+    state === 'update_available' ? '#f59e0b' :
+    state === 'error'            ? '#c94040' :
+    'rgb(var(--text-muted))'
 
   return (
     <button
       onClick={handleClick}
-      disabled={checking}
-      title={checked ? 'Already up to date' : 'Check for app updates'}
+      disabled={state === 'checking'}
+      title={
+        state === 'update_available'
+          ? `${latestTag} is available — click to open releases page`
+          : state === 'error'
+          ? 'Could not reach GitHub — check your connection'
+          : 'Check for app updates'
+      }
       style={{
         ...BAR_ITEM,
         borderRight: 'none',
         borderLeft: '1px solid rgba(255,255,255,0.06)',
-        cursor: checking ? 'default' : 'pointer',
-        color: checked ? '#4caf7a' : 'rgb(var(--text-muted))',
+        cursor: state === 'checking' ? 'default' : 'pointer',
+        color,
       }}
     >
-      <RefreshCw size={10} className={checking ? 'animate-spin' : ''} style={{ flexShrink: 0 }} />
-      {checked ? 'Up to date' : 'Check for Updates'}
+      <RefreshCw size={10} className={state === 'checking' ? 'animate-spin' : ''} style={{ flexShrink: 0 }} />
+      {label}
     </button>
   )
 }
