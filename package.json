@@ -3,14 +3,15 @@
   "version": "0.1.0",
   "description": "Slay the Spire 2 run analyzer",
   "main": "out/main/main.js",
+  "author": "connoryo",
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",
     "preview": "electron-vite preview",
-    "electron:build": "electron-vite build && electron-builder",
-    "electron:build:win": "electron-vite build && electron-builder --win",
-    "electron:build:mac": "electron-vite build && electron-builder --mac",
-    "electron:build:linux": "electron-vite build && electron-builder --linux"
+    "electron:build": "electron-vite build && electron-builder --publish never",
+    "electron:build:win": "electron-vite build && electron-builder --win --publish never",
+    "electron:build:mac": "electron-vite build && electron-builder --mac --publish never",
+    "electron:build:linux": "electron-vite build && electron-builder --linux --publish never"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -42,8 +43,7 @@
       "output": "release"
     },
     "files": [
-      "dist-electron",
-      "dist"
+      "out"
     ]
   }
 }
