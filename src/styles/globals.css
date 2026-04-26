@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Theme: Ironclad ─────────────────────────────────────────── */
+:root,
+[data-theme="ironclad"] {
+  --bg-primary:   18 8 5;
+  --bg-secondary: 30 14 8;
+  --bg-card:      45 21 16;
+  --bg-hover:     61 29 20;
+
+  --accent-gold:        232 89 42;
+  --accent-gold-light:  245 131 77;
+  --accent-red:         255 80 80;
+  --accent-blue:        249 115 22;
+  --accent-green:       250 204 21;
+  --accent-purple:      220 80 60;
+
+  --text-primary:   255 232 214;
+  --text-secondary: 192 128 96;
+  --text-muted:     122 63 40;
+
+  --border-default: 61 29 20;
+}
+
+/* ─── Theme: Silent ───────────────────────────────────────────── */
+[data-theme="silent"] {
+  --bg-primary:   6 13 9;
+  --bg-secondary: 10 20 16;
+  --bg-card:      17 31 23;
+  --bg-hover:     24 43 33;
+
+  --accent-gold:        34 197 94;
+  --accent-gold-light:  74 222 128;
+  --accent-red:         248 113 113;
+  --accent-blue:        6 182 212;
+  --accent-green:       132 204 22;
+  --accent-purple:      167 139 250;
+
+  --text-primary:   209 240 221;
+  --text-secondary: 122 171 138;
+  --text-muted:     54 92 69;
+
+  --border-default: 24 43 33;
+}
+
+/* ─── Theme: Defect ───────────────────────────────────────────── */
+[data-theme="defect"] {
+  --bg-primary:   7 12 20;
+  --bg-secondary: 12 20 32;
+  --bg-card:      17 30 48;
+  --bg-hover:     25 40 64;
+
+  --accent-gold:        34 211 238;
+  --accent-gold-light:  103 232 249;
+  --accent-red:         248 113 113;
+  --accent-blue:        96 165 250;
+  --accent-green:       52 211 153;
+  --accent-purple:      167 139 250;
+
+  --text-primary:   224 242 254;
+  --text-secondary: 127 179 204;
+  --text-muted:     58 92 117;
+
+  --border-default: 25 40 64;
+}
+
+/* ─── Theme: Necrobinder ──────────────────────────────────────── */
+[data-theme="necrobinder"] {
+  --bg-primary:   13 8 15;
+  --bg-secondary: 21 14 26;
+  --bg-card:      31 20 40;
+  --bg-hover:     42 28 56;
+
+  --accent-gold:        192 38 211;
+  --accent-gold-light:  232 121 249;
+  --accent-red:         244 63 94;
+  --accent-blue:        129 140 248;
+  --accent-green:       52 211 153;
+  --accent-purple:      168 85 247;
+
+  --text-primary:   240 232 255;
+  --text-secondary: 168 124 199;
+  --text-muted:     92 61 122;
+
+  --border-default: 42 28 56;
+}
+
+/* ─── Theme: Regent ───────────────────────────────────────────── */
+[data-theme="regent"] {
+  --bg-primary:   8 9 15;
+  --bg-secondary: 14 16 32;
+  --bg-card:      20 24 46;
+  --bg-hover:     28 34 64;
+
+  --accent-gold:        217 119 6;
+  --accent-gold-light:  245 158 11;
+  --accent-red:         239 68 68;
+  --accent-blue:        59 130 246;
+  --accent-green:       16 185 129;
+  --accent-purple:      139 92 246;
+
+  --text-primary:   240 232 212;
+  --text-secondary: 155 140 110;
+  --text-muted:     74 64 48;
+
+  --border-default: 28 34 64;
+}
+
+/* ─── Theme: Dark ─────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg-primary:   13 13 18;
+  --bg-secondary: 20 20 28;
+  --bg-card:      28 28 40;
+  --bg-hover:     36 36 52;
+
+  --accent-gold:        200 168 88;
+  --accent-gold-light:  220 194 128;
+  --accent-red:         220 80 80;
+  --accent-blue:        96 160 240;
+  --accent-green:       72 196 112;
+  --accent-purple:      176 120 240;
+
+  --text-primary:   218 216 232;
+  --text-secondary: 136 132 160;
+  --text-muted:     68 64 96;
+
+  --border-default: 36 36 52;
+}
+
+/* ─── Theme: Light ─────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-primary:   245 244 240;
+  --bg-secondary: 232 230 224;
+  --bg-card:      255 254 252;
+  --bg-hover:     218 216 210;
+
+  --accent-gold:        148 108 28;
+  --accent-gold-light:  180 140 48;
+  --accent-red:         192 56 56;
+  --accent-blue:        44 112 212;
+  --accent-green:       36 152 72;
+  --accent-purple:      132 72 196;
+
+  --text-primary:   28 26 22;
+  --text-secondary: 86 80 68;
+  --text-muted:     148 140 124;
+
+  --border-default: 200 196 188;
+}
+
+/* ─── Base styles ─────────────────────────────────────────────── */
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    background-color: rgb(var(--bg-primary));
+    color: rgb(var(--text-primary));
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    transition: background-color 0.25s ease, color 0.2s ease;
+  }
+
+  p, td, th, input, textarea, [data-selectable] {
+    user-select: text;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--bg-secondary)); }
+  ::-webkit-scrollbar-thumb { background: rgb(var(--text-muted) / 0.4); border-radius: 5px; border: 2px solid rgb(var(--bg-secondary)); }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--text-muted) / 0.7); }
+}
