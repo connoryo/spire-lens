@@ -209,7 +209,7 @@ function TitleBar() {
         </button>
       </div>
 
-      <span className="text-accent-gold font-bold text-sm tracking-tight ml-1">STS2 Viewer</span>
+      <span className="text-accent-gold font-bold text-sm tracking-tight ml-1">Spire Lens</span>
       {runs.length > 0 && (
         <span className="text-text-muted text-xs ml-2">{runs.length} runs</span>
       )}

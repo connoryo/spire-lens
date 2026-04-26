@@ -1,7 +1,7 @@
 {
-  "name": "sts2-viewer",
+  "name": "spire-lens",
   "version": "0.1.0",
-  "description": "Slay the Spire 2 run analyzer",
+  "description": "Slay the Spire 2 run history viewer and analyzer",
   "main": "out/main/main.js",
   "author": "connoryo",
   "scripts": {
@@ -37,8 +37,8 @@
     "vite": "^6.4.2"
   },
   "build": {
-    "appId": "com.sts2viewer.app",
-    "productName": "STS2 Viewer",
+    "appId": "com.spirelens.app",
+    "productName": "Spire Lens",
     "directories": {
       "output": "release"
     },

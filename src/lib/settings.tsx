@@ -20,7 +20,7 @@ const DEFAULTS: Settings = {
   themeAutoSet: false,
 }
 
-const STORAGE_KEY = 'sts2viewer-settings'
+const STORAGE_KEY = 'spirelens-settings'
 
 function load(): Settings {
   try {

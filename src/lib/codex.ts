@@ -2,7 +2,7 @@
 // Fetched once at startup, cached in localStorage for 24 hours.
 
 const BASE = 'https://spire-codex.com/api'
-const CACHE_KEY = 'sts2viewer-codex-v4'
+const CACHE_KEY = 'spirelens-codex-v1'
 const CACHE_TTL = 24 * 60 * 60 * 1000 // 24 hours
 
 // ── Types (based on observed API shape) ──────────────────────────────────────

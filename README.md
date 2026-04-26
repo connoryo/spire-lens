@@ -1,8 +1,8 @@
-# STS2 Viewer
+# Spire Lens
 
 A desktop app for browsing and analyzing your [Slay the Spire 2](https://store.steampowered.com/app/2868840/Slay_the_Spire_2/) run history. Built with Electron + React.
 
-![STS2 Viewer](https://placeholder)
+![Spire Lens](https://placeholder)
 
 ## Features
 
